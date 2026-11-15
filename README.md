@@ -4,7 +4,7 @@
 
 ## Скачать
 
-**[Скачать StoryBridge Launcher v0.1.0 для Windows](https://github.com/kychalox007/storybridge-releases/raw/refs/heads/main/StoryBridgeLauncher-windows-v0.1.0.zip)**
+**[Скачать StoryBridge Launcher v0.1.0 для Windows](https://github.com/kychalox007/storybridge-releases/releases/download/v0.1.0/StoryBridgeLauncher-windows-v0.1.0.zip)**
 
 [Все релизы](https://github.com/kychalox007/storybridge-releases/releases)
 
