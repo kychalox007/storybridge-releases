@@ -1,0 +1,32 @@
+name: Publish Windows release assets
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-assets.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Verify portable archive
+        run: sha256sum --check SHA256SUMS.txt
+      - name: Upload Windows Portable and checksums
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload v0.1.0 \
+            'StoryBridgeLauncher-windows-v0.1.0.zip#Windows Portable' \
+            'SHA256SUMS.txt#SHA-256 checksums' \
+            --repo "$GITHUB_REPOSITORY"
+      - name: Show release in the Latest section
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit v0.1.0 --repo "$GITHUB_REPOSITORY" --prerelease=false --latest --title 'v0.1.0'
